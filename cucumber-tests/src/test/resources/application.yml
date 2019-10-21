@@ -1,0 +1,33 @@
+server:
+  host: 127.0.0.1
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54320/demo
+    username: postgres
+    password: password
+    database: demo
+    host-port: 54320
+    container-port: 5432
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+
+liquibase:
+  change-log: classpath:liquibase/master.db.changelog.xml
+
+customer-api:
+  host: 127.0.0.1
+  port: 8082
+  endpoint:
+    add-customer: /api/customer/add
+    fetch-customer: /api/customer/get?
+    delete-customer: /api/customer/delete
