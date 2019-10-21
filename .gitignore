@@ -13,3 +13,8 @@ buildNumber.properties
 
 # IntelliJ stuff to ignore
 .idea/*
+
+# Allure stuff to ignore
+./cucumber-tests/allure-results
+./cucumber-tests/allure-reports
+
