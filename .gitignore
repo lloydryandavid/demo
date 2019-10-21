@@ -15,6 +15,6 @@ buildNumber.properties
 .idea/*
 
 # Allure stuff to ignore
-./cucumber-tests/allure-results
-./cucumber-tests/allure-reports
+cucumber-tests/allure-results
+cucumber-tests/allure-reports
 
