@@ -6,7 +6,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
-import org.testcontainers.containers.FixedHostPortGenericContainer;
 
 
 public class CustomerApiBaseTestClass {
@@ -19,9 +18,6 @@ public class CustomerApiBaseTestClass {
 
     @Autowired
     protected RestTemplate restTemplate;
-
-    @Autowired
-    protected FixedHostPortGenericContainer postgreSQLContainer;
 
     @Autowired
     protected JdbcTemplate jdbcTemplate;
