@@ -1,11 +1,13 @@
 package org.lrd.customerapi.systemtest.stepdefinitions;
 
 
+import org.lrd.customerapi.systemtest.model.GetCustomerResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
+import java.util.Map;
 
 
 public class CustomerApiBaseTestClass {
@@ -26,6 +28,8 @@ public class CustomerApiBaseTestClass {
 
     protected static HttpHeaders httpHeaders;
 
-    protected static ResponseEntity<String> responseEntity;
+    protected static ResponseEntity<Map> addCustomerResponseEntity;
+
+    protected static ResponseEntity<GetCustomerResponseMessage> getCustomerResponseEntity;
 
 }
