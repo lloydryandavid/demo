@@ -1,16 +1,15 @@
 package org.lrd.customerapi.systemtest.model;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
+@Data
 public class GetCustomerResponseMessage {
 
-    @Getter @Setter
     private String firstName;
 
-    @Getter @Setter
     private String lastName;
 
 }
