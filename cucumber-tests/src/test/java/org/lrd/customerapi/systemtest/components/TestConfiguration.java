@@ -1,51 +1,62 @@
 package org.lrd.customerapi.systemtest.components;
 
 
+import org.lrd.customerapi.systemtest.testcontext.CucumberTestContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.client.RestTemplate;
+
 import javax.sql.DataSource;
 
 
-@Component
-@Profile("local")
-public class ComponentTestConfiguration implements TestConfiguration {
+public class TestConfiguration {
 
     @Autowired
     private Environment environment;
+    
+    @Autowired
+    private DataSource dataSource;
 
-    public DataSource getDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(environment.getProperty("spring.datasource.url"));
-        dataSource.setUsername(environment.getProperty("spring.datasource.username"));
-        dataSource.setPassword(environment.getProperty("spring.datasource.password"));
-        dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver"));
-        return dataSource;
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
-    @Override
-    public String getFetchCustomerUrl() {
-        return String.format("%s%s:%s%s", "http://", getHost(), getPort(),(environment.getProperty("test-component-config.customer-api.endpoint.fetch-customer")));
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource);
     }
 
-    @Override
-    public String getAddCustomerUrl() {
-        return String.format("%s%s:%s%s", "http://", getHost(), getPort(), (environment.getProperty("test-component-config.customer-api.endpoint.add-customer")));
+    @Bean
+    public String getCustomerUrl() {
+        return String.format("%s%s:%s%s", "http://", getHost(), getPort(),(environment.getProperty("customer-api.endpoint.fetch-customer")));
     }
 
-    @Override
-    public String getDeleteCustomerUrl() {
-        return String.format("%s%s:%s%s", "http://", getHost(), getPort(), (environment.getProperty("test-component-config.customer-api.endpoint.delete-customer")));
+    @Bean
+    public String addCustomerUrl() {
+        return String.format("%s%s:%s%s", "http://", getHost(), getPort(), (environment.getProperty("customer-api.endpoint.add-customer")));
+    }
+
+    @Bean
+    public String deleteCustomerUrl() {
+        return String.format("%s%s:%s%s", "http://", getHost(), getPort(), (environment.getProperty("customer-api.endpoint.delete-customer")));
+    }
+
+    @Bean
+    @DependsOn({"restTemplate", "jdbcTemplate"})
+    public CucumberTestContext testContext() {
+        return new CucumberTestContext();
     }
 
     private String getHost() {
-        return environment.getProperty("test-component-config.customer-api.host");
+        return environment.getProperty("customer-api.host");
     }
 
     private String getPort() {
-        return environment.getProperty("test-component-config.customer-api.port");
+        return environment.getProperty("customer-api.port");
     }
 
 }
