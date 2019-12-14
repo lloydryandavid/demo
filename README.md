@@ -19,7 +19,7 @@ To run the test, please follow the instructions below:
 3. Compile, and process the needed resources for the test.  
 ``cucumber-tests$ mvn clean compile test-compile process-test-resources``  
 
-4. Execute the test and state the profile of the test. 
+4. Execute the test and state the profile of the test.  
 ``cucumber-tests$ mvn test -Dtest=TestRunner -Dspring.profiles.active=local``  
 
 Obviously, you can create another profile for the purpose of test execution on another environment. 
