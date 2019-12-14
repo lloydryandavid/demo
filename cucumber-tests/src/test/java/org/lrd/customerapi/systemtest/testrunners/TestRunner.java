@@ -1,4 +1,4 @@
-package org.lrd.customerapi.systemtest;
+package org.lrd.customerapi.systemtest.testrunners;
 
 
 import cucumber.api.CucumberOptions;
