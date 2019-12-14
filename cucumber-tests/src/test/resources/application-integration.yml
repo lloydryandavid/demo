@@ -3,6 +3,8 @@ server:
   port: 8082
 
 spring:
+  main:
+    web-application-type: none
   datasource:
     url: jdbc:postgresql://localhost:54320/demo
     username: postgres

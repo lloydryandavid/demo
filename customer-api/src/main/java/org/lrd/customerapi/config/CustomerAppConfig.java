@@ -12,8 +12,6 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@EnableAutoConfiguration
-@PropertySource("classpath:application.yml")
 public class CustomerAppConfig {
 
     @Autowired

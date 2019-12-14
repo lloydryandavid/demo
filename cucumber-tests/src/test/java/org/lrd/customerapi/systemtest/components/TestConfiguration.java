@@ -10,19 +10,18 @@ import javax.sql.DataSource;
 
 
 @Component
-@Profile("test-component")
+@Profile("local")
 public class ComponentTestConfiguration implements TestConfiguration {
 
     @Autowired
     private Environment environment;
 
-    @Override
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(environment.getProperty("test-component-config.datasource.url"));
-        dataSource.setUsername(environment.getProperty("test-component-config.datasource.username"));
-        dataSource.setPassword(environment.getProperty("test-component-config.datasource.password"));
+        dataSource.setUrl(environment.getProperty("spring.datasource.url"));
+        dataSource.setUsername(environment.getProperty("spring.datasource.username"));
+        dataSource.setPassword(environment.getProperty("spring.datasource.password"));
+        dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver"));
         return dataSource;
     }
 
