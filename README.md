@@ -23,5 +23,5 @@ To run the test, please follow the instructions below:
 ``cucumber-tests$ mvn test -Dtest=TestRunner -Dspring.profiles.active=local``  
 
 Obviously, you can create another profile for the purpose of test execution on another environment. 
-(e.g. run the tests against in a deployed environment) To do this, one needs to add another test runner and setup its 
+(e.g. run the tests against a deployed environment) To do this, one needs to add another test runner and setup its 
 context configuration. I will demonstrate this once I get the time to do so.
