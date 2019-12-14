@@ -8,8 +8,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"org.lrd.customerapi.systemtest"},
-        plugin = {"io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"}
+        glue = {
+                "classpath:org.lrd.customerapi.systemtest.init",
+                "classpath:org.lrd.customerapi.systemtest.stepdefinitions"
+        },
+        plugin = {"io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
+        features = {"src/test/resources/org/lrd/customerapi/systemtest/features/"},
+        tags = {"@local_test"}
 )
 public class TestRunner {
 }

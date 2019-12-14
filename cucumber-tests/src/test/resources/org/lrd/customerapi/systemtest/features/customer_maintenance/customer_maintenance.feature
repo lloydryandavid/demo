@@ -1,5 +1,6 @@
 Feature: This test deals with the creation, retrieval, and deletion of customers.
 
+  @local_test
   Scenario Outline: Create customers
     Given I have a payload containing the following properties: "<first_name>" "<last_name>"
     And   I have set the message headers <headers>

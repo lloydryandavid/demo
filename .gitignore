@@ -12,9 +12,12 @@ buildNumber.properties
 !/.mvn/wrapper/maven-wrapper.jar
 
 # IntelliJ stuff to ignore
+*/.idea/*
 .idea/*
+*.iml
 
 # Allure stuff to ignore
 cucumber-tests/allure-results
 cucumber-tests/allure-reports
+
 
