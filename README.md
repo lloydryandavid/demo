@@ -22,6 +22,9 @@ To run the test, please follow the instructions below:
 4. Execute the test and state the profile of the test.  
 ``cucumber-tests$ mvn test -Dtest=TestRunner -Dspring.profiles.active=local``  
 
+5. To serve the report, use the allure report generation tool.  
+``cucumber-tests$ allure serve allure-results/``
+
 Obviously, you can create another profile for the purpose of test execution on another environment. 
 (e.g. run the tests against a deployed environment) To do this, one needs to add another test runner and setup its 
 context configuration. I will demonstrate this once I get the time to do so.
